@@ -1,0 +1,45 @@
+<title>Đăng Ký</title>
+<link rel="stylesheet" href="/css/login.css">
+
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>Đăng Ký</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="full_name" placeholder="Họ và tên" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <button type="submit">Đăng ký</button>
+        </form>
+        <p>Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const full_name = document.getElementById('full_name').value;
+        const email = document.getElementById('email').value;
+
+        const response = await fetch('/api/users/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password, full_name, email })
+        });
+        const data = await response.json();
+        alert(data.message);
+        if (response.ok) {
+            window.location.href = '/login';
+        }
+    });
+</script>
