@@ -35,10 +35,10 @@
 ![Trang chat](screenshots/trangchu.png)
 
 ### Chat cá nhân:
-![Bảng trắng](screenshots/chatcanhan.png)
+![Chat cá nhân](screenshots/chatcanhan.png)
 
 ### Chat nhóm:
-![Bảng trắng](screenshots/chatnhom.png)
+![Chat nhóm](screenshots/chatnhom.png)
 
 ### Thư viện tài liệu:
 ![Thư viện tài liệu](screenshots/khotailieu.png)
@@ -47,9 +47,9 @@
 ![Checklist công việc](screenshots/listcv.png)
 
 ### Tìm kiếm - Kết bạn:
-![Bảng trắng](screenshots/timkiem-ketban.png)
+![Search and add friend](screenshots/timkiem_ketban.png)
 
 ### Tạo nhóm:
-![Bảng trắng](screenshots/taonhom.png)
+![Tạo nhóm](screenshots/taonhom.png)
 
 ### Và một số tính năng khác...
