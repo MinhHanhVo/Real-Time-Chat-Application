@@ -32,16 +32,13 @@ if (!fs.existsSync(uploadDir)) {
 connectDB();
 router(app);
 
-// Middleware xử lý lỗi 404
 app.use((req, res, next) => {
     if (req.url.startsWith('/api')) {
-        // Nếu yêu cầu bắt đầu bằng /api, trả về JSON
         return res.status(404).json({ message: 'Route not found' });
     }
-    // Nếu không phải yêu cầu API, có thể trả về HTML (hoặc để trống để client xử lý)
     res.status(404).send('Page not found');
 });
-// new1111111111111111111111111111111111111111111111111111
+
 // Hàm phân tích thời gian và nội dung nhắc nhở
 const parseReminder = (content) => {
     if (!content) return null;
@@ -64,8 +61,8 @@ const parseReminder = (content) => {
     }
 
     // Thêm kiểm tra để không kích hoạt ngay nếu thời gian chưa tới
-    if ((reminderTime - now) < 1000) { // Nhỏ hơn 1 giây
-        return null; // Bỏ qua nếu quá gần
+    if ((reminderTime - now) < 1000) {
+        return null;
     }
 
     return { time: reminderTime, content: reminderContent };
@@ -78,7 +75,7 @@ setInterval(async () => {
         // Tìm nhắc nhở chưa kích hoạt, trong khoảng 1 giây hiện tại
         const reminders = await Reminder.find({
             isTriggered: false,
-            time: { 
+            time: {
                 $gte: new Date(now.getTime() - 1000), // Từ 1 giây trước
                 $lte: now // Đến hiện tại
             }
@@ -96,9 +93,7 @@ setInterval(async () => {
     } catch (error) {
         console.error('Lỗi kiểm tra nhắc nhở:', error);
     }
-}, 1000); // Kiểm tra mỗi 1 giây
-// thêm mưới
-
+}, 1000);
 
 
 
@@ -146,7 +141,7 @@ io.on('connection', (socket) => {
                 file: filePath,
                 fileName,
                 isPending: false,
-                readBy: [senderId] // Người gửi tự động đã đọc
+                readBy: [senderId]
             };
 
             if (!conversation.isGroup && conversation.participants.length === 2) {
@@ -244,19 +239,16 @@ io.on('connection', (socket) => {
             if (!conversation.participants.includes(userId)) {
                 throw new Error('Bạn không phải thành viên cuộc trò chuyện');
             }
-
-            // Cập nhật tất cả tin nhắn chưa đọc trong cuộc trò chuyện
             await Message.updateMany(
                 {
                     conversation: conversationId,
-                    readBy: { $ne: userId } // Tin nhắn chưa được userId đọc
+                    readBy: { $ne: userId }
                 },
                 {
-                    $addToSet: { readBy: userId } // Thêm userId vào readBy
+                    $addToSet: { readBy: userId }
                 }
             );
 
-            // Thông báo đến client để cập nhật giao diện
             socket.emit('messagesMarkedRead', { conversationId });
         } catch (error) {
             console.error('Lỗi đánh dấu tin nhắn đã đọc:', error.message);
@@ -455,7 +447,7 @@ io.on('connection', (socket) => {
             socket.emit('error', { message: 'Lỗi xóa công việc: ' + error.message });
         }
     });
-    
+
     socket.on('sendFriendRequest', async ({ userId, friendId }) => {
         try {
             const friendRequest = new Friendship({
@@ -483,15 +475,15 @@ io.on('connection', (socket) => {
                     { requester: friendId, recipient: userId }
                 ]
             });
-    
+
             if (!friendship) {
                 throw new Error('Không tìm thấy lời mời kết bạn');
             }
-    
+
             friendship.status = 'accepted';
             await friendship.save();
             console.log('Friendship accepted:', { userId, friendId });
-    
+
             // Cập nhật trạng thái tin nhắn từ isPending: true thành isPending: false
             const updatedMessages = await Message.updateMany(
                 {
@@ -503,7 +495,7 @@ io.on('connection', (socket) => {
                 { $set: { isPending: false } }
             );
             console.log('Updated messages:', updatedMessages);
-    
+
             // Lấy lại danh sách tin nhắn đã cập nhật để gửi cho client
             const messages = await Message.find({
                 $or: [
@@ -511,9 +503,9 @@ io.on('connection', (socket) => {
                     { sender: friendId, receiver: userId }
                 ]
             })
-            .populate('sender', 'username full_name')
-            .sort({ createdAt: 1 });
-    
+                .populate('sender', 'username full_name')
+                .sort({ createdAt: 1 });
+
             // Emit sự kiện friendshipAccepted tới cả hai người dùng
             io.to(userId).emit('friendshipAccepted', {
                 friendId,
@@ -529,7 +521,6 @@ io.on('connection', (socket) => {
         }
     });
 
-    // 
     // Xử lý bảng trắng
     socket.on('whiteboardDraw', async ({ conversationId, x, y, color, isNewStroke }) => {
         const conversation = await Conversation.findById(conversationId);

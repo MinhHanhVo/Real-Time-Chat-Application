@@ -1,5 +1,3 @@
-
-
 /* CSS Variables */
 :root {
     --primary-color: #007bff;
@@ -10,7 +8,8 @@
     --danger-color-hover: #c82333;
     --info-color: #17a2b8;
     --info-color-hover: #138496;
-    --secondary-color: #6c757d; /* Added for secondary actions like 'Close' buttons */
+    --secondary-color: #6c757d;
+    /* Added for secondary actions like 'Close' buttons */
     --secondary-color-hover: #5a6268;
 
     --light-bg: #f8f9fa;
@@ -33,7 +32,9 @@
 }
 
 /* --- Global & Base Styles --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -43,7 +44,8 @@ body {
     font-size: 16px;
     line-height: 1.5;
     color: var(--text-color);
-    background-color: var(--white-color); /* Base background */
+    background-color: var(--white-color);
+    /* Base background */
 }
 
 ul {
@@ -57,8 +59,10 @@ button {
     border: none;
     font-size: inherit;
     font-family: inherit;
-    background-color: transparent; /* Default */
-    padding: 0; /* Default */
+    background-color: transparent;
+    /* Default */
+    padding: 0;
+    /* Default */
 }
 
 input[type="text"],
@@ -69,7 +73,8 @@ textarea {
     border-radius: var(--border-radius-sm);
     font-size: inherit;
     font-family: inherit;
-    width: 100%; /* Default width */
+    width: 100%;
+    /* Default width */
 }
 
 textarea {
@@ -98,23 +103,27 @@ label {
     text-align: center;
     vertical-align: middle;
     user-select: none;
-    border: 1px solid transparent; /* Base border */
+    border: 1px solid transparent;
+    /* Base border */
 }
 
 .btn-sm {
     padding: var(--small-padding) var(--default-padding);
-    font-size: 0.875em; /* Slightly smaller text */
+    font-size: 0.875em;
+    /* Slightly smaller text */
 }
 
 .btn-lg {
     padding: var(--default-padding) var(--large-padding);
-    font-size: 1.125em; /* Slightly larger text */
+    font-size: 1.125em;
+    /* Slightly larger text */
 }
 
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
+
 .btn-primary:hover {
     background-color: var(--primary-color-hover);
     border-color: var(--primary-color-hover);
@@ -124,6 +133,7 @@ label {
     background-color: var(--success-color);
     border-color: var(--success-color);
 }
+
 .btn-success:hover {
     background-color: var(--success-color-hover);
     border-color: var(--success-color-hover);
@@ -133,6 +143,7 @@ label {
     background-color: var(--danger-color);
     border-color: var(--danger-color);
 }
+
 .btn-danger:hover {
     background-color: var(--danger-color-hover);
     border-color: var(--danger-color-hover);
@@ -142,6 +153,7 @@ label {
     background-color: var(--info-color);
     border-color: var(--info-color);
 }
+
 .btn-info:hover {
     background-color: var(--info-color-hover);
     border-color: var(--info-color-hover);
@@ -151,6 +163,7 @@ label {
     background-color: var(--secondary-color);
     border-color: var(--secondary-color);
 }
+
 .btn-secondary:hover {
     background-color: var(--secondary-color-hover);
     border-color: var(--secondary-color-hover);
@@ -158,37 +171,101 @@ label {
 
 /* Specific Button Assignments (Based on IDs in HTML) */
 #btn_search {
-    background-color: var(--primary-color); color: var(--white-color); padding: 8px 12px; border-radius: var(--border-radius-sm);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 8px 12px;
+    border-radius: var(--border-radius-sm);
 }
-#btn_search:hover { background-color: var(--primary-color-hover); }
+
+#btn_search:hover {
+    background-color: var(--primary-color-hover);
+}
 
 #btn_create_group {
-    background-color: var(--success-color); color: var(--white-color); padding: var(--small-padding) var(--default-padding); border-radius: var(--border-radius-sm);
+    background-color: var(--success-color);
+    color: var(--white-color);
+    padding: var(--small-padding) var(--default-padding);
+    border-radius: var(--border-radius-sm);
 }
-#btn_create_group:hover { background-color: var(--success-color-hover); }
+
+#btn_create_group:hover {
+    background-color: var(--success-color-hover);
+}
 
 #btn_logout {
-    background-color: var(--danger-color); color: var(--white-color); padding: var(--small-padding) var(--default-padding); border-radius: var(--border-radius-sm);
+    background-color: var(--danger-color);
+    color: var(--white-color);
+    padding: var(--small-padding) var(--default-padding);
+    border-radius: var(--border-radius-sm);
 }
-#btn_logout:hover { background-color: var(--danger-color-hover); }
+
+#btn_logout:hover {
+    background-color: var(--danger-color-hover);
+}
 
 #btn_send {
-    background-color: var(--primary-color); color: var(--white-color); padding: var(--default-padding) var(--large-padding); border-radius: var(--border-radius-sm);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: var(--default-padding) var(--large-padding);
+    border-radius: var(--border-radius-sm);
 }
-#btn_send:hover { background-color: var(--primary-color-hover); }
+
+#btn_send:hover {
+    background-color: var(--primary-color-hover);
+}
 
 /* Chat Header Buttons */
-#btn_add_member { background-color: var(--primary-color); color: var(--white-color); margin-left: var(--default-padding); padding: var(--small-padding) var(--default-padding); border-radius: var(--border-radius-sm); }
-#btn_add_member:hover { background-color: var(--primary-color-hover); }
-#btn_library { background-color: var(--success-color); color: var(--white-color); margin-left: var(--default-padding); padding: var(--small-padding) var(--default-padding); border-radius: var(--border-radius-sm); }
-#btn_library:hover { background-color: var(--success-color-hover); }
-#btn_media { background-color: var(--info-color); color: var(--white-color); margin-left: var(--default-padding); padding: var(--small-padding) var(--default-padding); border-radius: var(--border-radius-sm); }
-#btn_media:hover { background-color: var(--info-color-hover); }
-#btn_tasks { background-color: var(--success-color); color: var(--white-color); margin-left: var(--default-padding); padding: var(--small-padding) var(--default-padding); border-radius: var(--border-radius-sm); }
-#btn_tasks:hover { background-color: var(--success-color-hover); }
+#btn_add_member {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    margin-left: var(--default-padding);
+    padding: var(--small-padding) var(--default-padding);
+    border-radius: var(--border-radius-sm);
+}
+
+#btn_add_member:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#btn_library {
+    background-color: var(--success-color);
+    color: var(--white-color);
+    margin-left: var(--default-padding);
+    padding: var(--small-padding) var(--default-padding);
+    border-radius: var(--border-radius-sm);
+}
+
+#btn_library:hover {
+    background-color: var(--success-color-hover);
+}
+
+#btn_media {
+    background-color: var(--info-color);
+    color: var(--white-color);
+    margin-left: var(--default-padding);
+    padding: var(--small-padding) var(--default-padding);
+    border-radius: var(--border-radius-sm);
+}
+
+#btn_media:hover {
+    background-color: var(--info-color-hover);
+}
+
+#btn_tasks {
+    background-color: var(--success-color);
+    color: var(--white-color);
+    margin-left: var(--default-padding);
+    padding: var(--small-padding) var(--default-padding);
+    border-radius: var(--border-radius-sm);
+}
+
+#btn_tasks:hover {
+    background-color: var(--success-color-hover);
+}
 
 /* File Upload Label Button */
-.btn_image { /* For the clip icon */
+.btn_image {
+    /* For the clip icon */
     padding: var(--default-padding);
     background-color: var(--success-color);
     color: var(--white-color);
@@ -197,9 +274,13 @@ label {
     align-items: center;
     transition: background-color var(--transition-speed) ease;
 }
-.btn_image:hover { background-color: var(--success-color-hover); }
 
-.btn_upload { /* For Library upload */
+.btn_image:hover {
+    background-color: var(--success-color-hover);
+}
+
+.btn_upload {
+    /* For Library upload */
     padding: 8px 12px;
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -208,30 +289,55 @@ label {
     align-items: center;
     transition: background-color var(--transition-speed) ease;
 }
-.btn_upload:hover { background-color: var(--primary-color-hover); }
+
+.btn_upload:hover {
+    background-color: var(--primary-color-hover);
+}
 
 /* Modal Submit/Action Buttons */
-#btn_submit_create_group, #btn_submit_add_member {
-    width: 100%; padding: var(--default-padding); background-color: var(--primary-color); color: var(--white-color); border-radius: var(--border-radius-sm); margin-top: 15px;
+#btn_submit_create_group,
+#btn_submit_add_member {
+    width: 100%;
+    padding: var(--default-padding);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: var(--border-radius-sm);
+    margin-top: 15px;
 }
-#btn_submit_create_group:hover, #btn_submit_add_member:hover { background-color: var(--primary-color-hover); }
+
+#btn_submit_create_group:hover,
+#btn_submit_add_member:hover {
+    background-color: var(--primary-color-hover);
+}
 
 #btn_add_task {
-    padding: 8px; background-color: var(--success-color); color: var(--white-color); border-radius: var(--border-radius-sm); align-self: flex-start; /* Align button left */
+    padding: 8px;
+    background-color: var(--success-color);
+    color: var(--white-color);
+    border-radius: var(--border-radius-sm);
+    align-self: flex-start;
+    /* Align button left */
 }
-#btn_add_task:hover { background-color: var(--success-color-hover); }
+
+#btn_add_task:hover {
+    background-color: var(--success-color-hover);
+}
 
 /* Modal Text Buttons (Close) - Apply .btn .btn-secondary class in HTML or style directly */
-.modal-content > button:last-child { /* Target text buttons often placed last */
-     margin-top: var(--large-padding); /* Space above close button */
-     padding: 8px 16px;
-     background-color: var(--secondary-color);
-     color: var(--white-color);
-     border-radius: var(--border-radius-sm);
-     float: right; /* Position to the right */
+.modal-content>button:last-child {
+    /* Target text buttons often placed last */
+    margin-top: var(--large-padding);
+    /* Space above close button */
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border-radius: var(--border-radius-sm);
+    float: right;
+    /* Position to the right */
 }
-.modal-content > button:last-child:hover {
-     background-color: var(--secondary-color-hover);
+
+.modal-content>button:last-child:hover {
+    background-color: var(--secondary-color-hover);
 }
 
 
@@ -239,26 +345,31 @@ label {
 .chat-layout {
     display: flex;
     height: 100vh;
-    overflow: hidden; /* Prevent body scroll */
+    overflow: hidden;
+    /* Prevent body scroll */
 }
 
 .sidebar {
     width: 300px;
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    flex-shrink: 0;
+    /* Prevent sidebar from shrinking */
     background-color: var(--medium-bg);
     padding: var(--large-padding);
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Allow sidebar content to scroll */
+    overflow-y: auto;
+    /* Allow sidebar content to scroll */
 }
 
 .container {
-    flex: 1; /* Take remaining space */
+    flex: 1;
+    /* Take remaining space */
     display: flex;
     flex-direction: column;
     padding: var(--large-padding);
-    overflow: hidden; /* Prevent container itself from scrolling */
+    overflow: hidden;
+    /* Prevent container itself from scrolling */
 }
 
 /* --- Sidebar Components --- */
@@ -267,13 +378,16 @@ label {
     gap: var(--default-padding);
     margin-bottom: var(--large-padding);
 }
+
 .search-container input {
     flex-grow: 1;
 }
 
-.sidebar-section { /* Generic container for results, requests, etc. */
+.sidebar-section {
+    /* Generic container for results, requests, etc. */
     margin-bottom: var(--large-padding);
 }
+
 .sidebar-section h3 {
     font-size: 16px;
     color: var(--text-color);
@@ -288,15 +402,22 @@ label {
     align-items: center;
     margin-bottom: var(--default-padding);
 }
-.group-header h3 { margin: 0; } /* Reset margin if needed */
+
+.group-header h3 {
+    margin: 0;
+}
+
+/* Reset margin if needed */
 
 /* Tabs */
 .tabs {
     display: flex;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: var(--default-padding);
-    margin-top: var(--default-padding); /* Add some space above tabs */
+    margin-top: var(--default-padding);
+    /* Add some space above tabs */
 }
+
 .tab {
     flex: 1;
     padding: var(--default-padding);
@@ -306,21 +427,35 @@ label {
     border: none;
     font-size: 16px;
     transition: background-color var(--transition-speed) ease;
-    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0; /* Rounded top corners */
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    /* Rounded top corners */
     border: 1px solid transparent;
     border-bottom: none;
 }
-.tab:hover { background: #e0e0e0; }
+
+.tab:hover {
+    background: #e0e0e0;
+}
+
 .tab.active {
-    background: var(--white-color); /* Active tab matches content area */
+    background: var(--white-color);
+    /* Active tab matches content area */
     font-weight: bold;
     border-color: var(--border-color);
-    border-bottom-color: var(--white-color); /* Hide bottom border part */
+    border-bottom-color: var(--white-color);
+    /* Hide bottom border part */
     position: relative;
-    top: 1px; /* Align with bottom border */
+    top: 1px;
+    /* Align with bottom border */
 }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
 
 /* Sidebar Lists (Friends, Groups, Requests, Search Results, Pending) */
 /* #search_results,
@@ -328,7 +463,7 @@ label {
 #group_list,
 #friend_list,
 #pending_list { */
-    /* Common list container styles if needed */
+/* Common list container styles if needed */
 /* } */
 
 #search_results li,
@@ -358,23 +493,31 @@ label {
 /* Specific button styles within sidebar lists */
 #search_results li button,
 #friend_requests li button {
-    padding: var(--small-padding) 8px; /* Smaller buttons */
+    padding: var(--small-padding) 8px;
+    /* Smaller buttons */
     border-radius: var(--border-radius-sm);
     margin-left: var(--small-padding);
     color: var(--white-color);
 }
-#search_results li button:first-of-type, /* Add friend */
-#friend_requests li button:first-of-type { /* Accept */
+
+#search_results li button:first-of-type,
+/* Add friend */
+#friend_requests li button:first-of-type {
+    /* Accept */
     background-color: var(--success-color);
 }
+
 #search_results li button:first-of-type:hover,
 #friend_requests li button:first-of-type:hover {
     background-color: var(--success-color-hover);
 }
+
 #search_results li button:last-of-type,
-#friend_requests li button:last-of-type { /* Decline */
+#friend_requests li button:last-of-type {
+    /* Decline */
     background-color: var(--danger-color);
 }
+
 #search_results li button:last-of-type:hover,
 #friend_requests li button:last-of-type:hover {
     background-color: var(--danger-color-hover);
@@ -395,9 +538,11 @@ label {
 
 /* User Info (Bottom Sidebar) */
 .user-info {
-    margin-top: auto; /* Pushes to the bottom */
+    margin-top: auto;
+    /* Pushes to the bottom */
     padding-top: var(--default-padding);
-    border-top: 1px solid var(--border-color); /* Separator */
+    border-top: 1px solid var(--border-color);
+    /* Separator */
     display: flex;
     align-items: center;
     gap: var(--default-padding);
@@ -418,8 +563,10 @@ label {
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    flex-shrink: 0; /* Prevent header from shrinking */
-    min-height: 40px; /* Ensure consistent height */
+    flex-shrink: 0;
+    /* Prevent header from shrinking */
+    min-height: 40px;
+    /* Ensure consistent height */
 }
 
 .chat-header h2 {
@@ -430,13 +577,16 @@ label {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-#chat_with { /* The actual span holding the name */
+
+#chat_with {
+    /* The actual span holding the name */
     font-weight: bold;
 }
 
 /* Welcome Message */
 .welcome-message {
-    flex: 1; /* Take up space when messages are empty */
+    flex: 1;
+    /* Take up space when messages are empty */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -448,11 +598,13 @@ label {
     margin: var(--default-padding) 0;
     padding: var(--large-padding);
 }
+
 .welcome-message h3 {
     font-size: 24px;
     margin: 0 0 var(--default-padding) 0;
     color: var(--text-color);
 }
+
 .welcome-message p {
     font-size: 16px;
     color: var(--text-light);
@@ -466,24 +618,29 @@ label {
 
 /* Message List */
 #ul_message {
-    flex: 1; /* Take available vertical space */
-    overflow-y: auto; /* Allow message scrolling */
+    flex: 1;
+    /* Take available vertical space */
+    overflow-y: auto;
+    /* Allow message scrolling */
     margin: var(--default-padding) 0;
     padding: var(--default-padding);
     background-color: var(--light-bg);
     border-radius: var(--border-radius-sm);
-    display: block; /* Default display */
+    display: block;
+    /* Default display */
 }
 
 /* Individual Message Bubbles */
 #ul_message li {
-    display: block; /* Override generic list flex */
+    display: block;
+    /* Override generic list flex */
     width: fit-content;
     max-width: 70%;
     margin-bottom: var(--default-padding);
     padding: 8px 12px;
     border-radius: var(--border-radius-md);
-    word-wrap: break-word; /* Ensure long words break */
+    word-wrap: break-word;
+    /* Ensure long words break */
     background-color: var(--dark-bg);
     color: var(--text-color);
     line-height: 1.4;
@@ -491,8 +648,10 @@ label {
     /* Remove hover effect from sidebar lists */
     transition: none;
 }
+
 #ul_message li:hover {
-     background-color: var(--dark-bg); /* No hover effect */
+    background-color: var(--dark-bg);
+    /* No hover effect */
 }
 
 #ul_message li.right {
@@ -500,8 +659,10 @@ label {
     color: var(--white-color);
     margin-left: auto;
 }
+
 #ul_message li.right:hover {
-    background-color: var(--primary-color); /* No hover effect */
+    background-color: var(--primary-color);
+    /* No hover effect */
 }
 
 /* Message Content (Images, Links) */
@@ -519,13 +680,16 @@ label {
     display: inline-block;
     padding: var(--small-padding) var(--default-padding);
     background-color: var(--info-color);
-    color: var(--white-color) !important; /* Ensure white text */
+    color: var(--white-color) !important;
+    /* Ensure white text */
     text-decoration: none;
     border-radius: var(--border-radius-sm);
     margin-top: var(--small-padding);
     transition: background-color var(--transition-speed) ease;
-    word-break: break-all; /* Break long links */
+    word-break: break-all;
+    /* Break long links */
 }
+
 #ul_message li a:hover {
     background-color: var(--info-color-hover);
     text-decoration: none;
@@ -538,7 +702,8 @@ label {
     align-items: center;
     padding-top: var(--default-padding);
     border-top: 1px solid var(--border-color);
-    flex-shrink: 0; /* Prevent input area from shrinking */
+    flex-shrink: 0;
+    /* Prevent input area from shrinking */
 }
 
 #ip_message {
@@ -552,7 +717,12 @@ label {
     align-items: center;
     gap: var(--default-padding);
 }
-#ip_file { display: none; } /* Hide actual file input */
+
+#ip_file {
+    display: none;
+}
+
+/* Hide actual file input */
 
 .selected-image-name,
 #library_file_name {
@@ -567,33 +737,42 @@ label {
 
 /* --- Modals --- */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly less dark overlay */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Slightly less dark overlay */
     justify-content: center;
     align-items: center;
-    padding: var(--large-padding); /* Padding around modal */
-    overflow-y: auto; /* Allow scrolling if modal is taller than viewport */
+    padding: var(--large-padding);
+    /* Padding around modal */
+    overflow-y: auto;
+    /* Allow scrolling if modal is taller than viewport */
 }
+
 .modal.is-open {
-     display: flex;
+    display: flex;
 }
 
 .modal-content {
     background-color: var(--white-color);
     padding: var(--large-padding);
     border-radius: var(--border-radius-md);
-    max-height: calc(100vh - 2 * var(--large-padding)); /* Max height considering padding */
-    overflow-y: auto; /* Scroll inside modal content if needed */
+    max-height: calc(100vh - 2 * var(--large-padding));
+    /* Max height considering padding */
+    overflow-y: auto;
+    /* Scroll inside modal content if needed */
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    width: 90%; /* Default width, overridden below */
-    max-width: 600px; /* Default max width */
+    width: 90%;
+    /* Default width, overridden below */
+    max-width: 600px;
+    /* Default max width */
 }
 
 .modal .close {
@@ -606,14 +785,22 @@ label {
     cursor: pointer;
     line-height: 1;
     transition: color var(--transition-speed) ease;
-    z-index: 10; /* Ensure close icon is above content */
+    z-index: 10;
+    /* Ensure close icon is above content */
 }
-.modal .close:hover { color: var(--text-color); }
+
+.modal .close:hover {
+    color: var(--text-color);
+}
 
 /* Specific Modal Content Styling */
 
 /* Image View Modal */
-#imageModal { background-color: rgba(0, 0, 0, 0.8); } /* Darker overlay for image */
+#imageModal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Darker overlay for image */
 #imageModal .modal-content {
     background: none;
     padding: 0;
@@ -624,45 +811,63 @@ label {
     overflow: hidden;
     border-radius: var(--border-radius-md);
 }
+
 #modalImage {
     display: block;
     max-width: 100%;
     max-height: 100%;
     border-radius: var(--border-radius-md);
 }
-#imageModal .close { /* Style close button for image modal */
-     color: var(--white-color);
-     top: 20px;
-     right: 30px;
-     font-size: 40px;
-     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+
+#imageModal .close {
+    /* Style close button for image modal */
+    color: var(--white-color);
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
-#imageModal .close:hover { color: #ccc; }
+
+#imageModal .close:hover {
+    color: #ccc;
+}
 
 /* Create Group / Add Member Modal */
 #createGroupModal .modal-content,
 #addMemberModal .modal-content {
     max-width: 400px;
 }
-#createGroupModal h3, #addMemberModal h3 { margin-top: 0; }
 
-#group_name { margin-bottom: 15px; }
+#createGroupModal h3,
+#addMemberModal h3 {
+    margin-top: 0;
+}
 
-.friend-checkboxes { margin-bottom: 15px; }
+#group_name {
+    margin-bottom: 15px;
+}
+
+.friend-checkboxes {
+    margin-bottom: 15px;
+}
+
 .friend-checkboxes h4 {
     font-size: 14px;
     color: var(--text-color);
     margin: 0 0 var(--default-padding) 0;
 }
+
 .friend-checkboxes ul {
     list-style: none;
     padding: 0;
-    max-height: 200px; /* Limit height */
+    max-height: 200px;
+    /* Limit height */
     overflow-y: auto;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
     padding: var(--small-padding) var(--default-padding);
 }
+
 .friend-checkboxes li {
     display: flex;
     align-items: center;
@@ -670,14 +875,24 @@ label {
     margin: 0;
     cursor: default;
 }
-.friend-checkboxes li:not(:last-child) { border-bottom: 1px solid #eee; }
+
+.friend-checkboxes li:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
 .friend-checkboxes li input[type="checkbox"] {
     margin-right: var(--default-padding);
     width: 16px;
     height: 16px;
     flex-shrink: 0;
 }
-.friend-checkboxes li label { flex-grow: 1; margin: 0; } /* Ensure label takes space */
+
+.friend-checkboxes li label {
+    flex-grow: 1;
+    margin: 0;
+}
+
+/* Ensure label takes space */
 
 /* Library / Media / Tasks Modal */
 #libraryModal .modal-content,
@@ -685,10 +900,17 @@ label {
 #tasksModal .modal-content {
     max-width: 600px;
 }
-#libraryModal h3, #mediaModal h3, #tasksModal h3 { margin-top: 0; }
+
+#libraryModal h3,
+#mediaModal h3,
+#tasksModal h3 {
+    margin-top: 0;
+}
 
 /* Common search input inside modals */
-#search_library, #search_media, #search_tasks {
+#search_library,
+#search_media,
+#search_tasks {
     margin-bottom: var(--default-padding);
 }
 
@@ -703,36 +925,52 @@ label {
     border: 1px dashed var(--border-color);
     border-radius: var(--border-radius-sm);
 }
-#library_file { display: none; }
+
+#library_file {
+    display: none;
+}
 
 /* Common list styles for Library, Media, Tasks */
-#library_files, #media_files, #task_list {
+#library_files,
+#media_files,
+#task_list {
     list-style: none;
     padding: 0;
     max-height: 50vh;
     overflow-y: auto;
 }
 
-#library_files li, #media_files li {
+#library_files li,
+#media_files li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
     border-bottom: 1px solid #eee;
 }
-#library_files li:last-child, #media_files li:last-child { border-bottom: none; }
 
-#library_files a, #media_files a {
+#library_files li:last-child,
+#media_files li:last-child {
+    border-bottom: none;
+}
+
+#library_files a,
+#media_files a {
     color: var(--primary-color);
     text-decoration: none;
     flex-grow: 1;
     margin-right: var(--default-padding);
     word-break: break-all;
 }
-#library_files a:hover, #media_files a:hover { text-decoration: underline; }
+
+#library_files a:hover,
+#media_files a:hover {
+    text-decoration: underline;
+}
 
 /* Delete buttons in Library/Media lists */
-#library_files button, #media_files button {
+#library_files button,
+#media_files button {
     padding: 3px 8px;
     background-color: var(--danger-color);
     color: var(--white-color);
@@ -740,7 +978,11 @@ label {
     transition: background-color var(--transition-speed) ease;
     flex-shrink: 0;
 }
-#library_files button:hover, #media_files button:hover { background-color: var(--danger-color-hover); }
+
+#library_files button:hover,
+#media_files button:hover {
+    background-color: var(--danger-color-hover);
+}
 
 
 /* Tasks Modal Specific */
@@ -755,22 +997,32 @@ label {
 
 #task_list li {
     display: flex;
-    align-items: flex-start; /* Align items to the top for multi-line descriptions */
+    align-items: flex-start;
+    /* Align items to the top for multi-line descriptions */
     gap: var(--default-padding);
     padding: var(--default-padding) 0;
     border-bottom: 1px solid #eee;
 }
-#task_list li:last-child { border-bottom: none; }
 
-#task_list li.completed { opacity: 0.7; }
+#task_list li:last-child {
+    border-bottom: none;
+}
+
+#task_list li.completed {
+    opacity: 0.7;
+}
+
 #task_list li.completed .task-title,
-#task_list li.completed .task-description { text-decoration: line-through; }
+#task_list li.completed .task-description {
+    text-decoration: line-through;
+}
 
 #task_list li input[type="checkbox"] {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    margin-top: 2px; /* Align checkbox better with text */
+    margin-top: 2px;
+    /* Align checkbox better with text */
 }
 
 .task-content {
@@ -778,21 +1030,30 @@ label {
     display: flex;
     flex-direction: column;
 }
-.task-title { font-weight: bold; word-break: break-word; }
+
+.task-title {
+    font-weight: bold;
+    word-break: break-word;
+}
+
 .task-description {
     color: var(--text-muted);
     font-size: 14px;
     margin-top: 3px;
-    word-break: break-word; /* Allow breaking long descriptions */
-    white-space: pre-wrap; /* Respect newlines in description */
+    word-break: break-word;
+    /* Allow breaking long descriptions */
+    white-space: pre-wrap;
+    /* Respect newlines in description */
 }
 
 .task-actions {
     display: flex;
     gap: var(--small-padding);
     flex-shrink: 0;
-    align-items: center; /* Align buttons vertically */
+    align-items: center;
+    /* Align buttons vertically */
 }
+
 /* Edit/Delete buttons in Task list */
 #task_list li button {
     padding: 3px 8px;
@@ -800,30 +1061,38 @@ label {
     transition: background-color var(--transition-speed) ease;
     color: var(--white-color);
 }
-#task_list li button.edit-task { /* Assuming an edit button might exist */
+
+#task_list li button.edit-task {
+    /* Assuming an edit button might exist */
     background-color: var(--info-color);
 }
+
 #task_list li button.edit-task:hover {
     background-color: var(--info-color-hover);
 }
-#task_list li button.delete-task { /* Assuming delete button has this class */
+
+#task_list li button.delete-task {
+    /* Assuming delete button has this class */
     background-color: var(--danger-color);
 }
+
 #task_list li button.delete-task:hover {
     background-color: var(--danger-color-hover);
 }
+
 /* Toast notification */
 /* Style cho toast của messageCensored (giữ nguyên nếu đã có) */
 .toast {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #4CAF50; /* Xanh lá */
+    background: #4CAF50;
+    /* Xanh lá */
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     max-width: 300px;
     animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
 }
@@ -831,39 +1100,65 @@ label {
 /* Style cho toast của tin nhắn mới */
 .new-message-toast {
     position: fixed;
-    top: 20px; /* Đặt ở góc trên bên phải */
+    top: 20px;
+    /* Đặt ở góc trên bên phải */
     right: 20px;
-    background: #007BFF; /* Xanh dương */
+    background: #007BFF;
+    /* Xanh dương */
     color: #fff;
-    padding: 12px 24px; /* Lớn hơn một chút để dễ đọc */
-    border-radius: 8px; /* Bo góc nhiều hơn */
-    z-index: 1001; /* Đảm bảo cao hơn toast khác */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 12px 24px;
+    /* Lớn hơn một chút để dễ đọc */
+    border-radius: 8px;
+    /* Bo góc nhiều hơn */
+    z-index: 1001;
+    /* Đảm bảo cao hơn toast khác */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     max-width: 350px;
     font-size: 14px;
-    animation: slideInTop 0.3s ease, slideOutTop 0.3s ease 3.7s; /* Hiệu ứng từ trên xuống */
+    animation: slideInTop 0.3s ease, slideOutTop 0.3s ease 3.7s;
+    /* Hiệu ứng từ trên xuống */
 }
 
 /* Animation cho toast của messageCensored */
 @keyframes slideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideOut {
-    from { transform: translateX(0); }
-    to { transform: translateX(100%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
 }
 
 /* Animation cho new-message-toast */
 @keyframes slideInTop {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideOutTop {
-    from { transform: translateY(0); }
-    to { transform: translateY(-100%); }
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
 }
 
 

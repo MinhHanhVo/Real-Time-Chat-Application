@@ -73,7 +73,7 @@ const draw = (e) => {
 
 // Nhận và vẽ từ người khác
 socket.on('whiteboardDraw', ({ x, y, color, isNewStroke }) => {
-    if (!isWhiteboardOpen) return; // Chỉ vẽ nếu bảng đang mở
+    if (!isWhiteboardOpen) return;
     ctx.strokeStyle = color;
     if (isNewStroke) {
         ctx.beginPath();
@@ -122,7 +122,7 @@ const clearCanvas = () => {
 
 // Nhận xóa từ người khác
 socket.on('whiteboardClear', () => {
-    if (!isWhiteboardOpen) return; // Chỉ xóa nếu bảng đang mở
+    if (!isWhiteboardOpen) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
@@ -214,7 +214,7 @@ const searchUser = async () => {
         searchResults.innerHTML = users.length === 0 ? '<li>Không tìm thấy</li>' : '';
 
         users.forEach(user => {
-            if (user._id !== myUserId) {               
+            if (user._id !== myUserId) {
                 const li = document.createElement('li');
                 li.textContent = user.full_name;
 

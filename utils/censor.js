@@ -12,7 +12,7 @@ try {
         'từ_không_lịch_sự_2',
         'từ_tiêu_cực_1',
         'damn',
-        'adfhajfg'
+        'fuck'
     ];
 }
 

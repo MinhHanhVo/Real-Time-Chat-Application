@@ -16,7 +16,7 @@ module.exports = {
                 return res.redirect('/login');
             }
             // Render chat.ejs với userId
-            res.render("chat", { userId: user._id });
+            res.render("chat");
         } catch (error) {
             console.error("Lỗi khi render chat:", error);
             res.status(500).send("Lỗi server");
