@@ -69,7 +69,7 @@ const parseReminder = (content) => {
 };
 
 // Kiểm tra nhắc nhở mỗi giây thay vì liên tục
-setInterval(async () => {
+setTimeout(async () => {
     try {
         const now = new Date();
         // Tìm nhắc nhở chưa kích hoạt, trong khoảng 1 giây hiện tại
@@ -88,7 +88,7 @@ setInterval(async () => {
             });
             reminder.isTriggered = true;
             await reminder.save();
-            console.log(`Gửi nhắc nhở cho user ${reminder.user}: ${reminder.content} vào ${reminder.time}`);
+            // console.log(`Gửi nhắc nhở cho user ${reminder.user}: ${reminder.content} vào ${reminder.time}`);
         }
     } catch (error) {
         console.error('Lỗi kiểm tra nhắc nhở:', error);
