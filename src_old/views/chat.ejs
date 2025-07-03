@@ -1,0 +1,186 @@
+<!-- views/chat.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="chat-layout">
+        <div class="sidebar">
+            <div class="search-container">
+                <input type="text" id="search_user" placeholder="Tìm kiếm người dùng...">
+                <button id="btn_search">Tìm</button>
+            </div>
+            <div class="search-results">
+                <!-- <h3>Kết quả tìm kiếm</h3> -->
+                <ul id="search_results"></ul>
+            </div>
+            <div class="friend-requests">
+                <h3>Lời mời kết bạn</h3>
+                <ul id="friend_requests"></ul>
+            </div>
+            <div class="group-section">
+                <div class="group-header">
+                    <h3>Nhóm</h3>
+                    <button id="btn_create_group">Tạo nhóm</button>
+                </div>
+                <ul id="group_list"></ul>
+            </div>
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('friends')">Bạn bè</button>
+                <button class="tab" onclick="showTab('pending')">Tin nhắn chờ</button>
+            </div>
+            <div id="friends" class="tab-content active">
+                <ul id="friend_list"></ul>
+            </div>
+            <div id="pending" class="tab-content">
+                <ul id="pending_list"></ul>
+            </div>
+            <div class="user-info">
+                <span id="current_username"></span>
+                <button id="btn_logout">Đăng xuất</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="chat-header">
+                <h2><span id="chat_with"></span></h2>
+                <button id="btn_add_member" style="display: none;">Thêm thành viên</button>
+                <button id="btn_library" style="display: none;">Thư viện tài liệu</button>
+                <button id="btn_media" style="display: none;">File/Ảnh</button>
+                <button id="btn_tasks" style="display: none;">Checklist công việc</button>
+                <button onclick="openWhiteboard()">Mở bảng trắng</button>
+            </div>
+            <div class="welcome-message">
+                <h3>Bắt đầu cuộc trò chuyện với một người bạn hoặc nhóm</h3>
+                <p>Chọn một người bạn hoặc nhóm từ danh sách bên trái để bắt đầu chat!</p>
+            </div>
+            <ul id="ul_message"></ul>
+            <div class="container_send">
+                <input type="text" id="ip_message" placeholder="Nhập tin nhắn...">
+                <div class="image-upload-container">
+                    <label for="ip_file" class="btn_image">
+                        <span>📎</span>
+                    </label>
+                    <input type="file" id="ip_file" accept="image/*,.pdf,.doc,.docx,.zip" style="display: none;">
+                    <span id="selected_file_name" class="selected-image-name"></span>
+                </div>
+                <button id="btn_send">Gửi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal tạo nhóm -->
+    <div id="createGroupModal" class="modal">
+        <div class="modal-content">
+            <h3>Tạo nhóm mới</h3>
+            <input type="text" id="group_name" placeholder="Tên nhóm">
+            <div class="friend-checkboxes">
+                <h4>Chọn bạn bè</h4>
+                <ul id="friend_checkboxes"></ul>
+            </div>
+            <button id="btn_submit_create_group">Tạo nhóm</button>
+            <span class="close" onclick="closeGroupModal()">×</span>
+        </div>
+    </div>
+
+    <!-- Modal thêm thành viên -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <h3>Thêm thành viên</h3>
+            <div class="friend-checkboxes">
+                <h4>Chọn bạn bè</h4>
+                <ul id="add_member_checkboxes"></ul>
+            </div>
+            <button id="btn_submit_add_member">Thêm</button>
+            <span class="close" onclick="closeAddMemberModal()">×</span>
+        </div>
+    </div>
+
+    <!-- Modal thư viện tài liệu -->
+    <div id="libraryModal" class="modal">
+        <div class="modal-content">
+            <h3>Thư viện tài liệu</h3>
+            <div class="upload-container">
+                <label for="library_file" class="btn_upload">
+                    <span>📤 Tải lên tài liệu</span>
+                </label>
+                <input type="file" id="library_file" accept="image/*,.pdf,.doc,.docx,.zip" style="display: none;">
+                <span id="library_file_name"></span>
+            </div>
+            <input type="text" id="search_library" placeholder="Tìm kiếm tài liệu...">
+            <ul id="library_files"></ul>
+            <button onclick="closeLibraryModal()">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal File/Ảnh -->
+    <div id="mediaModal" class="modal">
+        <div class="modal-content">
+            <h3>File/Ảnh</h3>
+            <input type="text" id="search_media" placeholder="Tìm kiếm file/ảnh...">
+            <ul id="media_files"></ul>
+            <button onclick="closeMediaModal()">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal Checklist công việc -->
+    <div id="tasksModal" class="modal">
+        <div class="modal-content">
+            <h3>Checklist công việc</h3>
+            <div class="task-form">
+                <input type="text" id="task_title" placeholder="Tiêu đề công việc...">
+                <textarea id="task_description" placeholder="Mô tả công việc..."></textarea>
+                <button id="btn_add_task">Thêm công việc</button>
+            </div>
+            <input type="text" id="search_tasks" placeholder="Tìm kiếm công việc...">
+            <ul id="task_list"></ul>
+            <button onclick="closeTasksModal()">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal hiển thị ảnh -->
+    <div id="imageModal" class="modal">
+        <span id="closeModal" class="close">×</span>
+        <img id="modalImage" class="modal-content" src="" alt="Hình ảnh lớn">
+    </div>
+
+    <!-- Modal bảng trắng -->
+    <div id="whiteboardModal" class="modal">
+        <div class="modal-content" style="width: 80%; max-width: 800px;">
+            <span class="close" onclick="closeWhiteboard()">&times;</span>
+            <h3>Bảng trắng nhóm</h3>
+            <div>
+                <button onclick="setColor('black')">Đen</button>
+                <button onclick="setColor('red')">Đỏ</button>
+                <button onclick="setColor('blue')">Xanh</button>
+                <button onclick="clearCanvas()">Xóa</button>
+                <button onclick="saveWhiteboard()">Lưu ảnh</button>
+            </div>
+            <canvas id="whiteboard" width="700" height="400"></canvas>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`button[onclick="showTab('${tabId}')"]`).classList.add('active');
+
+            if (tabId === 'pending') {
+                loadPendingMessages();
+            } else {
+                loadFriends();
+            }
+        }
+    </script>
+</body>
+
+</html>
