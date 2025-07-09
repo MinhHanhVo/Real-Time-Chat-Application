@@ -6,12 +6,14 @@ import cors from "cors";
 
 import authRoutes from './routes/auth.route.js';
 import messageRoutes from "./routes/message.route.js";
+import seedUsers from './seeds/user.seed.js';
 
 
 import connectDB from './lib/db.js';
+import { app, server } from './lib/socket.js';
+import User from './models/user.model.js';
 
 
-const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -33,7 +35,18 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-app.listen(PORT, () => {
+const checkAndSeedUsers = async () => {
+    const count = await User.countDocuments();
+    if (count === 0) {
+        await User.insertMany(seedUsers);
+        console.log("Seeded default users.");
+    } else {
+        console.log("Users already exist. Skipping seeding.");
+    }
+};
+
+server.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
     connectDB();
+    await checkAndSeedUsers();
 })
