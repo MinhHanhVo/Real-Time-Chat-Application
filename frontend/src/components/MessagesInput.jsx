@@ -1,12 +1,36 @@
 import React, { useRef, useState } from 'react'
 import { useChatStore } from '../store/useChatStore';
 import { Image, Send, X } from 'lucide-react';
+import EmojiPicker from 'emoji-picker-react';
+import { useEffect } from 'react';
 
 const MessagesInput = () => {
     const [text, setText] = useState("");
     const [imagePreview, setImagePreview] = useState("");
     const fileInputRef = useRef(null);
     const { sendMessage } = useChatStore();
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+    const inputRef = useRef(null);
+    const emojiPickerRef = useRef(null);
+    const emojiButtonRef = useRef(null);
+
+    useEffect(() => {
+        if (!showEmojiPicker) return;
+        const handleClickOutside = (event) => {
+            if (
+                emojiPickerRef.current &&
+                !emojiPickerRef.current.contains(event.target) &&
+                emojiButtonRef.current &&
+                !emojiButtonRef.current.contains(event.target)
+            ) {
+                setShowEmojiPicker(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showEmojiPicker]);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -24,6 +48,23 @@ const MessagesInput = () => {
     const removeImage = () => {
         setImagePreview(null);
         if (fileInputRef.current) fileInputRef.current.value = "";
+    };
+
+    const addEmoji = (emojiData) => {
+        const emojiChar = emojiData.emoji;
+        if (inputRef.current) {
+            const start = inputRef.current.selectionStart;
+            const end = inputRef.current.selectionEnd;
+            const newText = text.slice(0, start) + emojiChar + text.slice(end);
+            setText(newText);
+            setTimeout(() => {
+                inputRef.current.focus();
+                inputRef.current.selectionStart = inputRef.current.selectionEnd = start + emojiChar.length;
+            }, 0);
+        } else {
+            setText(text + emojiChar);
+        }
+        setShowEmojiPicker(false);
     };
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -74,6 +115,23 @@ const MessagesInput = () => {
                         value={text}
                         onChange={(e) => setText(e.target.value)}
                     />
+                    <button
+                        type="button"
+                        className="btn btn-circle btn-ghost"
+                        onClick={() => setShowEmojiPicker((v) => !v)}
+                        tabIndex={-1}
+                        ref={emojiButtonRef}
+                    >
+                        <span role="img" aria-label="emoji">😊</span>
+                    </button>
+                    {showEmojiPicker && (
+                        <div
+                            className="absolute bottom-12 right-20 z-50"
+                            ref={emojiPickerRef}
+                        >
+                            <EmojiPicker onEmojiClick={addEmoji} theme="auto" />
+                        </div>
+                    )}
                     <input
                         type="file"
                         accept="image/*"
