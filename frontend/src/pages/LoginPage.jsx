@@ -108,8 +108,8 @@ const LoginPage = () => {
 
             {/* right side */}
             <AuthImagePattern
-                title="Welcome back"
-                subtitle="Sign in to continue your conversations and catch up with your messages."
+                title="PulseChat"
+                subtitle="Nơi dành cho những cuộc trò chuyện có ý nghĩa."
 
             />
 

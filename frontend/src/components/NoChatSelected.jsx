@@ -17,9 +17,11 @@ const NoChatSelected = () => {
                 </div>
 
                 {/* Welcome Text */}
-                <h2 className="text-2xl font-bold">Welcome to PulseChat!</h2>
-                <p className="text-base-content/60">
-                    Select a conversation from the sidebar to start chatting
+                <h2 className="text-3xl font-extrabold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text drop-shadow-md animate-fade-in-up">
+                    Welcome to PulseChat!
+                </h2>
+                <p className="text-base-content/70 ">
+                    Không gian trò chuyện đang đợi bạn – chọn một cuộc trò chuyện bên cạnh nào!
                 </p>
             </div>
         </div>
